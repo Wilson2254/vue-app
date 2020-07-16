@@ -29,12 +29,10 @@
 
 <script>
 export default {
-  data: function() {
-    return {
+  data: () => ({
       drawer: false,
       group: null
-    };
-  },
+  }),
   computed: {
     menuItems() {
       return [
