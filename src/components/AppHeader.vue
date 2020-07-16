@@ -1,8 +1,10 @@
 <template>
-  <v-app>
+  <div>
     <v-app-bar app dark class="primary">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon >
-      <v-toolbar-title v-text="'English Speak'"></v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <router-link to="/" tag="span" style="cursor:pointer">
+        <v-toolbar-title v-text="'English Speak'"></v-toolbar-title>
+      </router-link>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn v-for="(items, item) in menuItems" :key="item" :to="items.route" text>
@@ -22,7 +24,7 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-  </v-app>
+  </div>
 </template>
 
 <script>

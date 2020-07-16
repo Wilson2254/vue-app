@@ -1,15 +1,19 @@
 <template>
-  <div id="app">
-      <AppHeader> </AppHeader>
-    <router-view/>
-  </div>
+  <v-app>
+    <AppHeader></AppHeader>
+    <v-main>
+      <router-view />
+    </v-main>
+    <AppFooter></AppFooter>
+  </v-app>
 </template>
 
 <script>
-import AppHeader from '@/components/AppHeader'
+import AppHeader from "@/components/AppHeader";
+import AppFooter from "@/components/AppFooter";
 export default {
-  components:{
-    AppHeader
+  components: {
+    AppHeader, AppFooter
   }
-}
+};
 </script>
