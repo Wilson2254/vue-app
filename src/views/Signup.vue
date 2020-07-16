@@ -8,7 +8,8 @@
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
-            <v-alert type="warning" :value="error">{{error}}</v-alert>
+            <v-alert type="warning" v-if="!error" :value="error">{{error}}</v-alert>
+            <v-alert type="warning" v-else>{{error}}</v-alert>
             <v-form>
               <v-text-field
                 label="Электронная почта"
@@ -32,7 +33,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click.prevent="signup">Зарегистрироваться</v-btn>
+            <v-btn color="primary" @click.prevent="signup" :disabled="processing">Зарегистрироваться</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -44,14 +45,17 @@
 export default {
   data() {
     return {
-      email: null,
-      password: null
+      email: '',
+      password: ''
     };
   },
-  computed:{
-      error(){
-          return this.$store.getters.getError
-      }
+  computed: {
+    error() {
+      return this.$store.getters.getError;
+    },
+    processing() {
+        return this.$store.getters.getProcessing;
+    }
   },
   methods: {
     signup() {
