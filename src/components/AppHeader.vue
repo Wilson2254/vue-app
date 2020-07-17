@@ -11,6 +11,10 @@
           <v-icon left v-html="items.icon"></v-icon>
           {{items.title}}
         </v-btn>
+        <v-btn text @click.prevent="signout">
+          <v-icon left>mdi-logout</v-icon>
+          Выйти
+        </v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
@@ -49,11 +53,6 @@ export default {
               icon: "mdi-account",
               title: "Личный кабинет",
               route: "/profile"
-            },
-            {
-              icon: "mdi-logout",
-              title: "Выйти",
-              route: "/logout"
             }
           ]
         : [
@@ -78,6 +77,11 @@ export default {
   watch: {
     group() {
       this.drawer = false;
+    }
+  },
+  methods:{
+    signout(){
+      
     }
   }
 };

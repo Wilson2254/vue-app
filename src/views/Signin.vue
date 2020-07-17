@@ -10,7 +10,7 @@
           <v-card-text>
             <v-alert type="warning" v-if="!error" :value="error">{{error}}</v-alert>
             <v-alert type="warning" v-else>{{error}}</v-alert>
-            <v-form>
+            <v-form v-model="valid">
               <v-text-field
                 label="Электронная почта"
                 name="login"
@@ -18,6 +18,7 @@
                 type="email"
                 required
                 v-model="email"
+                :rules="emailRules"
               ></v-text-field>
 
               <v-text-field
@@ -28,12 +29,13 @@
                 type="password"
                 required
                 v-model="password"
+                :rules="passwordRules"
               ></v-text-field>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" @click.prevent="signin" :disabled="processing">Авторизироваться</v-btn>
+            <v-btn color="primary" @click.prevent="signin" :disabled="processing || !valid">Авторизироваться</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -46,8 +48,19 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
-    };
+      password: "",
+      valid: false,
+            emailRules: [
+        v => !!v || "Пожалуйста введите email",
+        v =>
+          /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(v) 
+          || "Неправильный email"
+      ],
+      passwordRules: [
+        v => !!v || "Пожалуйста введите парот",
+        v => (v && v.length >= 6) || "Пароль должен иметь минимум 6 символов"
+      ]
+    }
   },
   computed: {
     error() {
