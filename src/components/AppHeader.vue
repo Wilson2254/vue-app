@@ -47,7 +47,7 @@ export default {
             },
             {
               icon: "mdi-account",
-              title: "Кабинет",
+              title: "Личный кабинет",
               route: "/profile"
             },
             {
