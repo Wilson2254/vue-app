@@ -28,5 +28,8 @@ export default {
                     commit('set_error', error.message)
                 });
         }
+    },
+    getters: {
+        isUserAuth: (state) => state.user.isAuth
     }
 }

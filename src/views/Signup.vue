@@ -45,8 +45,8 @@
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
   },
   computed: {
@@ -54,7 +54,15 @@ export default {
       return this.$store.getters.getError;
     },
     processing() {
-        return this.$store.getters.getProcessing;
+      return this.$store.getters.getProcessing;
+    },
+    isUserAuth() {
+      return this.$store.getters.isUserAuth;
+    }
+  },
+  watch: {
+    isUserAuth(val) {
+      if (val === true) this.$router.push("/");
     }
   },
   methods: {
