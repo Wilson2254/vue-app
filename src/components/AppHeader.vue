@@ -30,43 +30,49 @@
 <script>
 export default {
   data: () => ({
-      drawer: false,
-      group: null
+    drawer: false,
+    group: null
   }),
   computed: {
+    isUserAuth() {
+      return this.$store.getters.isUserAuth;
+    },
     menuItems() {
-      return [
-        {
-          icon: "mdi-eye",
-          title: "Читать",
-          route: "/books"
-        },
-        {
-          icon: "mdi-puzzle",
-          title: "Учить слова",
-          route: "/words"
-        },
-        {
-          icon: "mdi-account",
-          title: "Кабинет",
-          route: "/profile"
-        },
-        {
-          icon: "mdi-logout",
-          title: "Выйти",
-          route: "/logout"
-        },
-        {
-          icon: "mdi-login",
-          title: "Войти",
-          route: "/signin"
-        },
-        {
-          icon: "mdi-account-plus",
-          title: "Зарегистрироваться",
-          route: "/signup"
-        }
-      ];
+      return this.isUserAuth
+        ? [
+            {
+              icon: "mdi-eye",
+              title: "Читать",
+              route: "/books"
+            },
+            {
+              icon: "mdi-account",
+              title: "Кабинет",
+              route: "/profile"
+            },
+            {
+              icon: "mdi-logout",
+              title: "Выйти",
+              route: "/logout"
+            }
+          ]
+        : [
+            {
+              icon: "mdi-eye",
+              title: "Читать",
+              route: "/books"
+            },
+            {
+              icon: "mdi-login",
+              title: "Войти",
+              route: "/signin"
+            },
+            {
+              icon: "mdi-account-plus",
+              title: "Зарегистрироваться",
+              route: "/signup"
+            }
+          ];
     }
   },
   watch: {
