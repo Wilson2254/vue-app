@@ -12,8 +12,7 @@
           {{items.title}}
         </v-btn>
         <v-btn text @click.prevent="signout" v-if="isUserAuth">
-          <v-icon left>mdi-logout</v-icon>
-          Выйти
+          <v-icon left>mdi-logout</v-icon>Выйти
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -62,14 +61,14 @@ export default {
               route: "/books"
             },
             {
-              icon: "mdi-login",
-              title: "Войти",
-              route: "/signin"
-            },
-            {
               icon: "mdi-account-plus",
               title: "Зарегистрироваться",
               route: "/signup"
+            },
+            {
+              icon: "mdi-login",
+              title: "Войти",
+              route: "/signin"
             }
           ];
     }
@@ -79,9 +78,9 @@ export default {
       this.drawer = false;
     }
   },
-  methods:{
-    signout(){
-      this.$store.dispatch('signout')
+  methods: {
+    signout() {
+      this.$store.dispatch("signout");
     }
   }
 };
