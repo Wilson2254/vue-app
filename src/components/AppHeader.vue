@@ -11,7 +11,7 @@
           <v-icon left v-html="items.icon"></v-icon>
           {{items.title}}
         </v-btn>
-        <v-btn text @click.prevent="signout">
+        <v-btn text @click.prevent="signout" v-if="isUserAuth">
           <v-icon left>mdi-logout</v-icon>
           Выйти
         </v-btn>
@@ -81,7 +81,7 @@ export default {
   },
   methods:{
     signout(){
-      
+      this.$store.dispatch('signout')
     }
   }
 };
