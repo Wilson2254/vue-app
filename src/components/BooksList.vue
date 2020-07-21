@@ -2,11 +2,11 @@
   <v-container>
     <v-row>
       <v-col lg="4">
-        <v-text-field label="Поиск книги" outlined shaped></v-text-field>
+        <v-text-field label="Поиск" outlined shaped v-model="searchBook"></v-text-field>
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="book in books" :key="book.id">
+      <v-col v-for="book in filteredBooks" :key="book.id">
         <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
@@ -38,8 +38,8 @@
 
           <v-card-actions>
             <div class="ml-2">
-              <span>{{book.rating}}</span>
-              <span>({{book.ratingsCount}})</span>
+              <span>Оценка: {{book.rating}}</span>
+              <span>(Оценило: {{book.ratingsCount}})</span>
             </div>
             <v-spacer></v-spacer>
             <v-btn color="orange" text>Почитать</v-btn>
@@ -53,9 +53,20 @@
 
 <script lang="ts">
 export default {
+  data() {
+    return {
+      searchBook: null
+    };
+  },
   computed: {
     books() {
       return this.$store.getters.getBooks;
+    },
+    filteredBooks() {
+      let books = this.books;
+      if (this.searchBook)
+        books = this.books.filter(b => b.title.toLowerCase().indexOf(this.searchBook.toLowerCase()) >= 0)
+      return books;
     }
   },
   methods: {
