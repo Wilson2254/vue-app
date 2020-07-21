@@ -10,11 +10,11 @@
     </v-row>
     <v-row>
       <v-col v-for="book in filteredBooks" :key="book.id">
-        <v-card class="mx-auto" max-width="600">
+        <v-card class="mx-auto" max-width="570">
           <v-img
             class="white--text align-end"
             height="300px"
-            src="https://pm1.narvii.com/7272/3ded1d4deefd5002d2e0a32d29d582be11d873dbr1-1280-720v2_00.jpg"
+            src="https://avatars.mds.yandex.net/get-zen_doc/1898242/pub_5dfe227d86c4a900ad29bb87_5dfe239e9515ee00ac5860d1/scale_1200"
           >
             <v-card-title>{{book.title}}</v-card-title>
           </v-img>
