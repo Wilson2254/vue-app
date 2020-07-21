@@ -1,8 +1,13 @@
 <template>
-  <v-container grid-list-md>
-    <v-layout row wrap>
-      <v-row v-for="book in books" :key="book.id" xs12 sm10 md8 offset-sm1 offset-md-2>
-        <v-card class="mx-auto" max-width="450">
+  <v-container>
+    <v-row>
+      <v-col lg="4">
+        <v-text-field label="Поиск книги" outlined shaped></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col v-for="book in books" :key="book.id">
+        <v-card class="mx-auto">
           <v-img
             class="white--text align-end"
             height="200px"
@@ -29,7 +34,6 @@
               dense
               half-increments
             ></v-rating>
-
             <div class="ml-2">
               <span>{{book.rating}}</span>
               <span>({{book.ratingsCount}})</span>
@@ -38,8 +42,8 @@
             <v-btn color="orange" text>Почитать</v-btn>
           </v-card-actions>
         </v-card>
-      </v-row>
-    </v-layout>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
