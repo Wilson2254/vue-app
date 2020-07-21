@@ -2,7 +2,10 @@
   <v-container>
     <v-row>
       <v-col lg="4">
-        <v-text-field label="Поиск" outlined shaped v-model="searchBook"></v-text-field>
+        <v-text-field label="Поиск" outlined v-model="searchBook"></v-text-field>
+      </v-col>
+      <v-col lg="2">
+        <v-select label="Уровень" outlined v-model="level" :items="levels" multiple></v-select>
       </v-col>
     </v-row>
     <v-row>
@@ -55,7 +58,9 @@
 export default {
   data() {
     return {
-      searchBook: null
+      searchBook: null,
+      levels: ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"],
+      level: []
     };
   },
   computed: {
@@ -65,7 +70,13 @@ export default {
     filteredBooks() {
       let books = this.books;
       if (this.searchBook)
-        books = this.books.filter(b => b.title.toLowerCase().indexOf(this.searchBook.toLowerCase()) >= 0)
+        books = books.filter(
+          b => b.title.toLowerCase().indexOf(this.searchBook.toLowerCase()) >= 0
+        );
+      if (this.level.length)
+        books = books.filter(
+          b => this.level.filter(val => b.level.indexOf(val) !== -1).length > 0
+        );
       return books;
     }
   },

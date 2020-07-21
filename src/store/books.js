@@ -2,7 +2,7 @@ export default {
     state: {
         books: [{
                 id: '1234',
-                title: 'Harry Potter and the Philosopher`s Stone - 1',
+                title: 'Гарри Поттер и философский камень - 1',
                 description: 'Первая глава первой книги о Гарри Поттере',
                 image: 'gfdgdfg',
                 parts: 7,
@@ -12,7 +12,7 @@ export default {
             },
             {
                 id: '1fdgh234',
-                title: 'Harry Potter and the Philosopher`s Stone - 2',
+                title: 'Гарри Поттер и философский камень - 2',
                 description: 'Вторая глава первой книги о Гарри Поттере',
                 image: 'gfsggfdsa',
                 parts: 7,
@@ -22,7 +22,7 @@ export default {
             },
             {
                 id: '1fd3411523gah234',
-                title: 'Harry Potter and the Philosopher`s Stone - 3',
+                title: 'Гарри Поттер и философский камень - 3',
                 description: 'Третья глава первой книги о Гарри Поттере',
                 image: '11457gfsggfdsa',
                 parts: 7,
