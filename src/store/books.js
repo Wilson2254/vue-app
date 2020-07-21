@@ -16,7 +16,7 @@ export default {
                 description: 'Вторая глава первой книги о Гарри Поттере',
                 image: 'gfsggfdsa',
                 parts: 7,
-                level: ['B1', 'В2'],
+                level: ['B1', 'B2'],
                 rating: 3.5,
                 ratingsCount: 55,
             },
