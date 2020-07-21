@@ -22,12 +22,20 @@
       </v-toolbar-items>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary class="hidden-md-and-up">
+    <v-navigation-drawer v-model="drawer" fixed temporary class="hidden-md-and-up">
       <v-list nav dense>
         <v-list-item-group v-model="group">
-          <v-list-item v-for="(items, item) in menuItems" :key="item" :to="items.route" text>
+          <v-list-item
+            v-for="(items, item) in menuItems"
+            :key="item"
+            :to="items.route"
+            text
+          >
             <v-icon left v-html="items.icon"></v-icon>
             {{items.title}}
+          </v-list-item>
+          <v-list-item text @click.prevent="signout" v-if="isUserAuth">
+            <v-icon left>mdi-logout</v-icon>Выйти
           </v-list-item>
         </v-list-item-group>
       </v-list>

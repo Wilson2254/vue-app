@@ -9,7 +9,6 @@ export default {
                 level: ['B2', 'C1'],
                 rating: 4,
                 ratingsCount: 100,
-                youtube_playlist_id: 'fdsffsd554'
             },
             {
                 id: '1fdgh234',
@@ -20,7 +19,6 @@ export default {
                 level: ['B1', 'В2'],
                 rating: 3.5,
                 ratingsCount: 55,
-                youtube_playlist_id: 'fdsffs111d554'
             },
             {
                 id: '1fd3411523gah234',
@@ -31,7 +29,6 @@ export default {
                 level: ['A2'],
                 rating: 2,
                 ratingsCount: 80,
-                youtube_playlist_id: 'fdayh54esffs111d554'
             },
         ]
     },

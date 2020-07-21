@@ -34,8 +34,8 @@
               <span>{{book.rating}}</span>
               <span>({{book.ratingsCount}})</span>
             </div>
-                          <v-spacer></v-spacer>
-              <v-btn color="orange" text>Почитать</v-btn>
+            <v-spacer></v-spacer>
+            <v-btn color="orange" text>Почитать</v-btn>
           </v-card-actions>
         </v-card>
       </v-row>
