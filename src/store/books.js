@@ -41,6 +41,6 @@ export default {
         },
     },
     getters: {
-        getBooks: (state) => state.processing,
+        getBooks: (state) => state.books,
     },
 }
