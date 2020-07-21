@@ -24,7 +24,7 @@
             <div>Частей: {{book.parts}}</div>
           </v-card-text>
 
-          <v-card-actions>
+          <div class="ml-2">
             <v-rating
               v-model="book.rating"
               background-color="orange lighten-3"
@@ -34,6 +34,9 @@
               dense
               half-increments
             ></v-rating>
+          </div>
+
+          <v-card-actions>
             <div class="ml-2">
               <span>{{book.rating}}</span>
               <span>({{book.ratingsCount}})</span>
