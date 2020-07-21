@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-app-bar app dark class="primary">
+    <v-app-bar
+      app
+      color="#fcb69f"
+      dark
+      src="https://i.picsum.photos/id/114/3264/2448.jpg?hmac=DOmBAsmlq14qncJF_8kOc4zPjtJtVBqmymXphtNHPOA"
+      scroll-target="#scrolling-techniques-2"
+    >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
       <router-link to="/" tag="span" style="cursor:pointer">
         <v-toolbar-title v-text="'English Speak'"></v-toolbar-title>
