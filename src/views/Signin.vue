@@ -51,7 +51,7 @@ export default {
       password: "",
       valid: false,
             emailRules: [
-        v => v || "Пожалуйста введите email",
+        v => !!v || "Пожалуйста введите email",
         v =>
           /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(v) 
           || "Неправильный email"
