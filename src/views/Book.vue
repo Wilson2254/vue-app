@@ -3,16 +3,17 @@
     <v-row>
       <v-col>
         <book-details :book="book"></book-details>
-      </v-col>
-      <v-col v-for="part in book.parts" :key="part.id">
-        <!-- <book-part-list-item></book-part-list-item> -->
+        <v-col v-for="part in book.parts" :key="part.id">
+          <book-part-list-item :part="part" :bookId="book.id"></book-part-list-item>
+        </v-col>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import BookDetails from '../components/BookDetails'
+import BookDetails from "../components/BookDetails";
+import BookPartListItem from "../components/BookPartListItem";
 export default {
   props: {
     id: {
@@ -25,8 +26,9 @@ export default {
       return this.$store.getters.getBooks.find(b => b.id == this.id);
     }
   },
-  components:{
-      BookDetails
+  components: {
+    BookDetails,
+    BookPartListItem
   }
 };
 </script>
