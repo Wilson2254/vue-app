@@ -4,7 +4,7 @@
       <v-card-title class="headline">{{part.title}}</v-card-title>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="orange" :to="{name: 'bookPart', params:{bookId: bookId, partId:part.id}}">Открыть</v-btn>
+        <v-btn text color="orange" :to="{name: 'bookPart', params:{bookId:bookId, partId:part.id}}">Открыть</v-btn>
       </v-card-actions>
     </v-card>
   </div>

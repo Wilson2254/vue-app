@@ -26,10 +26,14 @@ export default {
   },
   computed: {
     part() {
-      let val = this.$store.getters.getParts.find(
+      console.log(
+        this.$store.getters.getParts.find(
+          b => b.bookId == this.bookId && b.bookPartId == this.partId
+        )
+      );
+      return this.$store.getters.getParts.find(
         b => b.bookId == this.bookId && b.bookPartId == this.partId
       );
-      return val;
     }
   },
   components: {
