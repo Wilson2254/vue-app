@@ -17,27 +17,24 @@ export default {
   props: {
     bookId: {
       type: String,
-      required: true
+      required: true,
     },
     partId: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     part() {
-      console.log(
-        this.$store.getters.getParts.find(
-          b => b.bookId == this.bookId && b.bookPartId == this.partId
-        )
+      let val = this.$store.getters.getParts.find(
+        (b) => b.bookId == this.bookId && b.bookPartId == this.partId
       );
-      return this.$store.getters.getParts.find(
-        b => b.bookId == this.bookId && b.bookPartId == this.partId
-      );
-    }
+      console.log(val);
+      return val;
+    },
   },
   components: {
-    BookPartContent
-  }
+    BookPartContent,
+  },
 };
 </script>

@@ -95,9 +95,9 @@ export default {
             },
         ],
         bookParts: [{
-            bookId: 'fdsfs',
-            bookPartId: 'fdwwthgd',
-            bookTitle: 'Гарри Поттер и философский камень - 3',
+            bookId: '1234',
+            bookPartId: 'aaa1',
+            bookTitle: 'Гарри Поттер и философский камень - 1',
             partTitle: 'Часть 1',
             content: [{
                     sentences: [{
