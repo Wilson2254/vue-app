@@ -10,9 +10,19 @@
       ></youtube>
     </div>
     <div>
-      <v-tabs v-model="tabMode" fixed-tabs color="orange">
-        <v-tab :key="german">Текст с подсказками</v-tab>
-        <v-tab :key="sidebyside">Параллельно</v-tab>
+      <v-tabs v-model="tabMode" fixed-tabs color="orange" slider-color="green">
+        <v-tab>Текст с подсказками</v-tab>
+        <v-tab>Параллельно</v-tab>
+        <v-tab-item>
+          <div v-for="(paragraph, i) in part.content" :key="`par1${i}`">
+            <br />
+            <span v-for="(sentence, y) in paragraph.sentences" :key="`par1${i}sen1${y}`">
+              <span> {{sentence.originText}} </span>
+              <v-icon size="22">mdi-lightbulb</v-icon>
+            </span>
+          </div>
+        </v-tab-item>
+        <v-tab-item>АТЬ АТЬ</v-tab-item>
       </v-tabs>
     </div>
   </v-card>
@@ -29,6 +39,7 @@ export default {
   data() {
     return {
       tabMode: "English",
+      nbsp: ' ',
     };
   },
   computed: {
