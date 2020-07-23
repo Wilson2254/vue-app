@@ -3,7 +3,7 @@
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="4">
         <v-card class="elevation-12">
-          <v-toolbar color="primary" dark flat>
+          <v-toolbar color="orange" dark flat>
             <v-toolbar-title>Регистрация</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
@@ -16,6 +16,7 @@
                 name="login"
                 prepend-icon="mdi-account"
                 type="email"
+                color="orange"
                 required
                 v-model="email"
                 :rules="emailRules"
@@ -27,6 +28,7 @@
                 name="password"
                 prepend-icon="mdi-lock"
                 type="password"
+                color="orange"
                 required
                 v-model="password"
                 :rules="passwordRules"
@@ -36,7 +38,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
-              color="primary"
+              color="orange"
               @click.prevent="signup"
               :disabled="processing
               ||
