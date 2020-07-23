@@ -11,7 +11,7 @@
           <v-toolbar-title>Слова</v-toolbar-title>
           <v-spacer></v-spacer>
 
-          <span class="mr-4"> {{ page }}/{{ numberOfPages }}</span>
+          <span class="mr-4">{{ page }}/{{ numberOfPages }}</span>
           <v-btn dark color="brown darken-3" class="mr-1" @click="formerPage">
             <v-icon>mdi-chevron-left</v-icon>
           </v-btn>
