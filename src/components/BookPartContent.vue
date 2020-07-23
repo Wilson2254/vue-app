@@ -10,7 +10,7 @@
       ></youtube>
     </div>
     <div>
-      <v-slider v-model="fontSize" :label="`Шрифт ${fontSize}`" color="orange" thumb-label="always"  max="56" min="8" tick-size="15"></v-slider>
+      <v-slider v-model="fontSize" :label="`Шрифт ${fontSize}`" color="orange" max="56" min="8" tick-size="15"></v-slider>
       <v-tabs v-model="tabMode" fixed-tabs color="orange" slider-color="green">
         <v-tab>Текст с подсказками</v-tab>
         <v-tab>Параллельно</v-tab>
