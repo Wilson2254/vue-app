@@ -99,6 +99,7 @@ export default {
             bookPartId: 'aaa1',
             bookTitle: 'Гарри Поттер и философский камень - 1',
             partTitle: 'Часть 1',
+            youtube_id: 'fff_iM1f3MI',
             content: [{
                     sentences: [{
                             originText: 'Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much.',

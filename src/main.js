@@ -6,6 +6,9 @@ import store from './store'
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 import firebaseConfig from './config/firebase'
 import firebase from 'firebase'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+
+Vue.use(VueYouTubeEmbed)
 
 Vue.config.productionTip = false
 

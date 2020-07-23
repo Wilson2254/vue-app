@@ -1,12 +1,10 @@
 <template>
   <v-container v-if="part">
+    <v-row justify="center">
+      <book-part-content :part="part"></book-part-content>
+    </v-row>
     <v-row>
-      <v-col>
-        <book-part-content :part="part"></book-part-content>
-      </v-col>
-      <v-col>
-        <!-- <book-part-words :words="parts.words"></book-part-words> -->
-      </v-col>
+      <!-- <book-part-words :words="parts.words"></book-part-words> -->
     </v-row>
   </v-container>
 </template>
@@ -29,7 +27,6 @@ export default {
       let val = this.$store.getters.getParts.find(
         (b) => b.bookId == this.bookId && b.bookPartId == this.partId
       );
-      console.log(val);
       return val;
     },
   },
