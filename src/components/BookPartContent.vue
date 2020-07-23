@@ -22,7 +22,7 @@
             </span>
           </div>
         </v-tab-item>
-        <v-tab-item>АТЬ АТЬ</v-tab-item>
+        <v-tab-item>АТЬ А ТЬ</v-tab-item>
       </v-tabs>
     </div>
   </v-card>
