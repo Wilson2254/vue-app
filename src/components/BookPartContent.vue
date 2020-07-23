@@ -76,7 +76,7 @@ export default {
     },
     playerHeight() {
       return {
-        xs: "150px",
+        xs: "200px",
         sm: "300px",
         md: "400px",
         lg: "500px",

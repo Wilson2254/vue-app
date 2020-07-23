@@ -2,15 +2,14 @@
   <v-container v-if="part">
     <v-row justify="center">
       <book-part-content :part="part"></book-part-content>
-    </v-row>
-    <v-row>
-      <!-- <book-part-words :words="parts.words"></book-part-words> -->
+      <book-part-words :words="part.words"></book-part-words>
     </v-row>
   </v-container>
 </template>
 
 <script>
 import BookPartContent from "../components/BookPartContent";
+import BookPartWords from "../components/BookPartWords";
 export default {
   props: {
     bookId: {
@@ -32,6 +31,7 @@ export default {
   },
   components: {
     BookPartContent,
+    BookPartWords,
   },
 };
 </script>
