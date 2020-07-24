@@ -1,22 +1,18 @@
 <template>
   <v-card class="mx-auto" max-width="570">
-    <v-img
-      class="white--text align-end"
-      height="300px"
-      src="https://avatars.mds.yandex.net/get-zen_doc/1898242/pub_5dfe227d86c4a900ad29bb87_5dfe239e9515ee00ac5860d1/scale_1200"
-    >
-      <v-card-title>{{book.title}}</v-card-title>
-    </v-img>
+    <v-list-item :to="{name: 'book', params:{id:book.id}}">
+      <v-img class="white--text align-end" height="300px" :src="book.imageUrl">
+        <v-card-title>{{book.title}}</v-card-title>
+      </v-img>
+    </v-list-item>
+    <v-list-item dense class="mt-3">{{book.description}}</v-list-item>
 
-    <v-card-subtitle class="pb-0">{{book.description}}</v-card-subtitle>
+      <v-list-item dense>Уровень: {{getBookLevel(book.level)}}</v-list-item>
 
-    <v-card-text class="text--primary">
-      <div>Уровень: {{getBookLevel(book.level)}}</div>
+    <v-list-item dense>Частей: {{book.parts.length}}</v-list-item>
 
-      <div>Частей: {{book.parts.length}}</div>
-    </v-card-text>
 
-    <div class="ml-2">
+    <!-- <div class="ml-2">
       <v-rating
         v-model="book.rating"
         background-color="orange lighten-3"
@@ -26,15 +22,15 @@
         dense
         half-increments
       ></v-rating>
-    </div>
+    </div>-->
 
     <v-card-actions>
-      <div class="ml-2">
+      <!-- <div class="ml-2">
         <span>Оценка: {{book.rating}}</span>
         <span>(Оценило: {{book.ratingsCount}})</span>
-      </div>
+      </div>-->
       <v-spacer></v-spacer>
-      <v-btn color="orange" text :to="{name: 'book', params:{id:book.id}}">Почитать</v-btn>
+      <v-btn color="orange" text :to="{name: 'book', params:{id:book.id}}">Открыть</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -45,11 +41,11 @@ export default {
   props: {
     book: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
-    getBookLevel: bookHelper.getBookLevel
-  }
+    getBookLevel: bookHelper.getBookLevel,
+  },
 };
 </script>

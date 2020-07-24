@@ -4,7 +4,7 @@
       <v-img
         class="white--text align-end"
         height="300px"
-        src="https://avatars.mds.yandex.net/get-zen_doc/1898242/pub_5dfe227d86c4a900ad29bb87_5dfe239e9515ee00ac5860d1/scale_1200"
+        :src="book.imageUrl"
       >
         <v-card-title>{{book.title}}</v-card-title>
       </v-img>
@@ -18,7 +18,7 @@
       </v-card-text>
 
       <div class="ml-2">
-        <v-rating
+        <!-- <v-rating
           v-model="book.rating"
           background-color="orange lighten-3"
           color="orange"
@@ -26,16 +26,16 @@
           readonly
           dense
           half-increments
-        ></v-rating>
+        ></v-rating> -->
       </div>
 
       <v-card-actions>
-        <div class="ml-2">
+        <!-- <div class="ml-2">
           <span>Оценка: {{book.rating}}</span>
           <span>(Оценило: {{book.ratingsCount}})</span>
-        </div>
+        </div> -->
         <v-spacer></v-spacer>
-        <v-btn color="orange" text>Почитать</v-btn>
+        <v-btn color="orange" text :to="{name: 'books'}">Назад</v-btn>
       </v-card-actions>
     </v-card>
   </div>

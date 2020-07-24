@@ -29,11 +29,12 @@
 
               <v-divider></v-divider>
 
-              <v-list dense>
-                <v-list-item>
-                  <v-list-item-content class="align-end">{{ item.transWord }}</v-list-item-content>
-                </v-list-item>
-              </v-list>
+              <v-card-title class="font-weight-bold">{{ item.transWord }}</v-card-title>
+              
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn small color="orange" fab><v-icon>mdi-plus</v-icon></v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -46,7 +47,7 @@
 export default {
   data() {
     return {
-      itemsPerPage: 4,
+      itemsPerPage: 2,
       page: 1,
     };
   },

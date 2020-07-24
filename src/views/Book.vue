@@ -3,9 +3,9 @@
     <v-row>
       <v-col>
         <book-details :book="book"></book-details>
-        <v-col v-for="part in book.parts" :key="part.id">
+        <div class="mt-2" v-for="part in book.parts" :key="part.id">
           <book-part-list-item :part="part" :bookId="book.id"></book-part-list-item>
-        </v-col>
+        </div>
       </v-col>
     </v-row>
   </v-container>

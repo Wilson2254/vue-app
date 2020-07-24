@@ -6,13 +6,17 @@ import store from './store'
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 import firebaseConfig from './config/firebase'
 import firebase from 'firebase'
+import "firebase/firestore"
 import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.use(VueYouTubeEmbed)
 
 Vue.config.productionTip = false
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore()
+
+Vue.$db = db
 
 new Vue({
     router,
@@ -24,5 +28,8 @@ new Vue({
         firebase.auth().onAuthStateChanged(function(user) {
             flag.$store.dispatch('state_changed', user)
         });
+
+        this.$store.dispatch('load_books')
+
     }
 }).$mount('#app')
