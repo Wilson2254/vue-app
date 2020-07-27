@@ -30,8 +30,8 @@ export default {
                     if (userData.books)
                         userData.books = {}
 
-                    for (let key in userData.books) {
-                        if (userData.books.hasOwnProperty(key))
+                    for (var key in userData.books) {
+                        if (Object.prototype.hasOwnProperty.call(userData.books, key))
                             userData.books[key].addedDate = userData.books[key].addedDate.toDate()
                     }
 

@@ -38,7 +38,7 @@
         <v-btn color="orange" text v-if="canLoadBook(book.id)" @click="loadBook(book.id)">Загрузить</v-btn>
         <div v-if="getUserDataBook(book.id)">
           <v-icon>mdi-cloud-check</v-icon>
-          Книга скачана {{getBookAddedDate(book.id)}}
+          Книга скачана: {{getBookAddedDate(book.id)}}
         </div>
       </v-card-actions>
     </v-card>
@@ -71,8 +71,8 @@ export default {
       this.$store.dispatch('add_user_book', bookId)
     },
     getBookAddedDate(bookId){
-      let book = this.getBookAddedDate(bookId)
-      return book.addedDate.tolocaleDateString()
+      let book = this.getUserDataBook(bookId)
+      return book.addedDate.toLocaleDateString()
     }
   }
 };
