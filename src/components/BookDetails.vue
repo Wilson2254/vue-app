@@ -35,7 +35,11 @@
           <span>(Оценило: {{book.ratingsCount}})</span>
         </div> -->
         <v-spacer></v-spacer>
-        <v-btn color="orange" text :to="{name: 'books'}">Назад</v-btn>
+        <v-btn color="orange" text v-if="canLoadBook(book.id)" @click="loadBook(book.id)">Загрузить</v-btn>
+        <div v-if="getUserDataBook(book.id)">
+          <v-icon>mdi-cloud-check</v-icon>
+          Книга скачана {{getBookAddedDate(book.id)}}
+        </div>
       </v-card-actions>
     </v-card>
   </div>
@@ -43,6 +47,7 @@
 
 <script>
 import * as bookHelper from "@/helpers/book";
+import {mapGetters} from "vuex"
 export default {
   props: {
     book: {
@@ -50,8 +55,25 @@ export default {
       required: true
     }
   },
+  computed:{
+    ...mapGetters(['isUserAuth', 'userData', "getProcessing"])
+  },
   methods: {
-    getBookLevel: bookHelper.getBookLevel
+    getBookLevel: bookHelper.getBookLevel,
+    canLoadBook(bookId){
+      let book = this.getUserDataBook(bookId)
+      return this.isUserAuth && !this.getProcessing && !book
+    },
+    getUserDataBook(bookId){
+      return this.userData.books[bookId]
+    },
+    loadBook(bookId){
+      this.$store.dispatch('add_user_book', bookId)
+    },
+    getBookAddedDate(bookId){
+      let book = this.getBookAddedDate(bookId)
+      return book.addedDate.tolocaleDateString()
+    }
   }
 };
 </script>

@@ -52,12 +52,14 @@ export default {
         state_changed({ commit }, payload) {
             if (payload) {
                 commit('set_user', payload.uid)
+                commit('load_user_data', payload.uid)
             } else {
                 commit('unset_user')
             }
         }
     },
     getters: {
+        userId: (state) => state.user.uid,
         isUserAuth: (state) => state.user.isAuth
     }
 }
