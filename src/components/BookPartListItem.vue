@@ -4,22 +4,38 @@
       <v-card-title class="headline">{{part.title}}</v-card-title>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn text color="orange" :to="{name: 'bookPart', params:{bookId:bookId, partId:part.id}}">Открыть</v-btn>
+        <v-btn
+          text
+          color="orange"
+          v-if="isUserBookLoaded"
+          :to="{name: 'bookPart', params:{bookId:bookId, partId:part.id}}"
+        >Открыть</v-btn>
       </v-card-actions>
     </v-card>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   props: {
     part: {
       type: Object,
-      required: true
+      required: true,
     },
     bookId: {
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
+  computed: {
+    ...mapGetters(["isUserAuth", "userData", "getProcessing"]),
+    isUserBookLoaded() {
+      return (
+        this.isUserAuth &&
+        !this.getProcessing &&
+        !!this.userData.books[this.bookId]
+      );
+    },
+  },
 };
 </script>

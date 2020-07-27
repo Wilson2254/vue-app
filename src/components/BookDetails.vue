@@ -29,15 +29,16 @@
         ></v-rating> -->
       </div>
 
-      <v-card-actions>
+      <v-card-actions class="mr-2 ml-2">
         <!-- <div class="ml-2">
           <span>Оценка: {{book.rating}}</span>
           <span>(Оценило: {{book.ratingsCount}})</span>
         </div> -->
+        <v-icon large>mdi-cloud-check</v-icon>
         <v-spacer></v-spacer>
         <v-btn color="orange" text v-if="canLoadBook(book.id)" @click="loadBook(book.id)">Загрузить</v-btn>
         <div v-if="getUserDataBook(book.id)">
-          <v-icon>mdi-cloud-check</v-icon>
+          
           Книга скачана: {{getBookAddedDate(book.id)}}
         </div>
       </v-card-actions>

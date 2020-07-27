@@ -58,6 +58,7 @@ export default {
                 }, { merge: true })
                 .then(() => {
                     commit('add_user_book', { bookId: payload, book: book })
+                    commit('set_processing', false)
                 })
         }
     },
