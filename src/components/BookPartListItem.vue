@@ -30,7 +30,6 @@ export default {
   computed: {
     ...mapGetters(["isUserAuth", "userData", "getProcessing"]),
     isUserBookLoaded() {
-      console.log( this.getProcessing);
       return (
         this.isUserAuth &&
         !this.getProcessing &&
