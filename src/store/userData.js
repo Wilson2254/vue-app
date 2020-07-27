@@ -16,6 +16,12 @@ export default {
         },
         add_user_book(state, payload) {
             Vue.set(state.userData.books, payload.bookId, payload.book)
+        },
+        add_user_book_part(state, payload) {
+            Vue.set(state.userData.books[payload.bookId].parts, payload.partId, { addedDate: payload.timestamp })
+        },
+        update_user_book_part_last_opened_date(state, payload) {
+            Vue.set(state.userData.books[payload.bookId].parts[payload.partId], 'lastOpenedDate', payload.timestamp)
         }
 
     },
@@ -62,6 +68,21 @@ export default {
                 }).catch(() => {
                     commit('set_processing', false)
                 })
+        },
+        update_user_book_stats({ commit, getters }, payload) {
+            let userDataRef = Vue.$db.collection('userData').doc(getters.userId)
+            let timestamp = new Date()
+            if (!getters.userData.books[payload.bookId].parts[payload.partId]) {
+                userDataRef.update({
+                        [`books.${payload.bookId}.parts.${payload.partId}.addedDate`]: timestamp
+                    })
+                    .then(() => commit('add_user_book_part', { bookId: payload.bookId, partId: payload.partId, timestamp: timestamp }))
+            }
+
+            userDataRef.update({
+                [`books.${payload.bookId}.parts.${payload.partId}.lastOpenedDate`]: timestamp
+
+            }).then(() => commit('update_user_book_part_last_opened_date', { bookId: payload.bookId, partId: payload.partId, timestamp: timestamp }))
         }
     },
     getters: {

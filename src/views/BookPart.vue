@@ -46,6 +46,9 @@ export default {
           this.part = s.data();
         });
       })
+      .then(() => {
+        this.$store.dispatch("update_user_book_stats", {bookId: this.bookId, partId: this.partId});
+      })
       .catch((error) => console.log(error));
   },
   components: {
