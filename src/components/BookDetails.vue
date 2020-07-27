@@ -34,7 +34,7 @@
           <span>Оценка: {{book.rating}}</span>
           <span>(Оценило: {{book.ratingsCount}})</span>
         </div> -->
-        <!-- <v-icon v-if="getUserDataBook(book.id)" large>mdi-cloud-check</v-icon> -->
+        <v-icon v-if="getUserDataBook(book.id)" large>mdi-cloud-check</v-icon>
         <v-spacer></v-spacer>
         <v-btn color="orange" text v-if="canLoadBook(book.id)" @click="loadBook(book.id)">Загрузить</v-btn>
         <div v-if="getUserDataBook(book.id)">
