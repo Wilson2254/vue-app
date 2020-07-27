@@ -27,7 +27,7 @@ export default {
                 .then((data) => {
                     let userData = data.exists ? data.data() : defaultUserData
 
-                    if (userData.books)
+                    if (!userData.books)
                         userData.books = {}
 
                     for (var key in userData.books) {
@@ -58,6 +58,8 @@ export default {
                 }, { merge: true })
                 .then(() => {
                     commit('add_user_book', { bookId: payload, book: book })
+                    commit('set_processing', false)
+                }).catch(() => {
                     commit('set_processing', false)
                 })
         }
