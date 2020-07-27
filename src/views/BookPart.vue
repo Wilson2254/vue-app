@@ -5,13 +5,13 @@
       <book-part-words :words="part.words"></book-part-words>
       <v-container>
         <v-row justify="center">
-          <v-btn v-if="!finishDate" color="success" orange @click="finishDialog = true">
+          <v-btn v-if="!finishedDate" color="success" orange @click="finishDialog = true">
             <v-icon>mdi-check</v-icon>Прочтение завершено
           </v-btn>
         </v-row>
       </v-container>
 
-      <v-dialog v-model="finishDialog" width="300">
+      <v-dialog v-model="finishDialog" max-width="300">
         <v-card>
           <v-card>
             <v-img
@@ -25,14 +25,14 @@
             </v-card-title>
             <v-card-text>
               <span>Моя оценка</span>
-              <v-rating v-model="rating" color="succes" half-increments large></v-rating>
+              <v-rating v-model="rating" color="success" half-increments large></v-rating>
             </v-card-text>
             <v-card-actions>
               <v-spacer>
                 <v-btn color="red" text @click="finishDialog=false">
                   <v-icon>mdi-close</v-icon>Закрыть
                 </v-btn>
-                <v-btn color="success" text @click="finishWork=false">
+                <v-btn color="success" text @click="finishWork, finishDialog=false">
                   <v-icon>mdi-check</v-icon>Прочтение завершено
                 </v-btn>
               </v-spacer>
@@ -73,7 +73,7 @@ export default {
     //   );
     //   return val;
     // },
-    finishDate() {
+    finishedDate() {
       return this.$store.getters.userData.books[this.bookId].parts[this.partId]
         .finishedDate;
     },
