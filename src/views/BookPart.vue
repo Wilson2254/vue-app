@@ -1,6 +1,23 @@
 <template>
   <v-container v-if="part">
     <v-row justify="center">
+      <v-container v-if="finishedDate">
+        <v-card>
+          <v-img
+            src="https://firebasestorage.googleapis.com/v0/b/englishspeak-a8a45.appspot.com/o/356-3569430_checked-and-done-done-and-done-clipart.png?alt=media&token=a8873e69-b70b-4264-b6b9-083fd9d90bd8"
+            max-width="300px"
+            max-height="200px"
+            class="text-center"
+          ></v-img>
+          <v-card-title>
+            <div class="headline">Данный раздел полностью прочитан {{finishedDate | formattedDate}}</div>
+          </v-card-title>
+          <v-card-text>
+            <span>Моя оценка</span>
+            <v-rating v-model="savedRating" color="success" readonly large></v-rating>
+          </v-card-text>
+        </v-card>
+      </v-container>
       <book-part-content :part="part"></book-part-content>
       <book-part-words :words="part.words"></book-part-words>
       <v-container>
@@ -77,6 +94,10 @@ export default {
       return this.$store.getters.userData.books[this.bookId].parts[this.partId]
         .finishedDate;
     },
+    savedRating() {
+      return this.$store.getters.userData.books[this.bookId].parts[this.partId]
+        .rating;
+    },
   },
   created() {
     Vue.$db
@@ -95,7 +116,7 @@ export default {
           partId: this.partId,
         });
       })
-      .catch((error) => console.log(error));                 
+      .catch((error) => console.log(error));
   },
   methods: {
     finishWork() {
@@ -104,7 +125,7 @@ export default {
         partId: this.partId,
         rating: this.rating,
       });
-      this.finishDialog = false
+      this.finishDialog = false;
     },
   },
   components: {

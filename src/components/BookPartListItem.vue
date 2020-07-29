@@ -4,6 +4,10 @@
       <v-card-title class="headline">{{part.title}}</v-card-title>
       <v-card-actions>
         <v-spacer></v-spacer>
+        <div v-if="finishedDate">
+          <v-icon>mdi-check</v-icon>
+          Прочитано {{finishedDate | formattedDate}}
+        </div>
         <v-btn
           text
           color="orange"
@@ -35,6 +39,14 @@ export default {
         !this.getProcessing &&
         !!this.userData.books[this.bookId]
       );
+    },
+    finishedDate() {
+
+      let book = this.userData.books[this.bookId];
+
+      if (book && book.parts[this.part.id]) return book.parts[this.part.id].finishedDate;
+
+      return false
     },
   },
 };

@@ -39,7 +39,7 @@
         <v-btn color="orange" text v-if="canLoadBook(book.id)" @click="loadBook(book.id)">Загрузить</v-btn>
         <div v-if="getUserDataBook(book.id)">
           
-          Книга скачана: {{getBookAddedDate(book.id)}}
+          Книга скачана: {{getBookAddedDate(book.id) | formattedDate}}
         </div>
       </v-card-actions>
     </v-card>
@@ -73,7 +73,7 @@ export default {
     },
     getBookAddedDate(bookId){
       let book = this.getUserDataBook(bookId)
-      return book.addedDate.toLocaleDateString()
+      return book.addedDate
     }
   }
 };

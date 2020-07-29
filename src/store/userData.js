@@ -41,11 +41,6 @@ export default {
                     if (!userData.books)
                         userData.books = {}
 
-                    for (var key in userData.books) {
-                        if (Object.prototype.hasOwnProperty.call(userData.books, key))
-                            userData.books[key].addedDate = userData.books[key].addedDate.toDate()
-                    }
-
                     commit('set_user_data', userData)
                     commit('set_processing', false)
                 })
