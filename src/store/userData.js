@@ -12,7 +12,8 @@ export default {
     },
     mutations: {
         set_user_data(state, payload) {
-            state.userData = payload
+            // state.userData = payload
+            Vue.set(state, 'userData', payload)
         },
         add_user_book(state, payload) {
             Vue.set(state.userData.books, payload.bookId, payload.book)

@@ -32,7 +32,7 @@
                 <v-btn color="red" text @click="finishDialog=false">
                   <v-icon>mdi-close</v-icon>Закрыть
                 </v-btn>
-                <v-btn color="success" text @click="finishWork, finishDialog=false">
+                <v-btn color="success" text @click="finishWork">
                   <v-icon>mdi-check</v-icon>Прочтение завершено
                 </v-btn>
               </v-spacer>
@@ -95,7 +95,7 @@ export default {
           partId: this.partId,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error));                 
   },
   methods: {
     finishWork() {
@@ -104,6 +104,7 @@ export default {
         partId: this.partId,
         rating: this.rating,
       });
+      this.finishDialog = false
     },
   },
   components: {
