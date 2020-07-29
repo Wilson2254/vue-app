@@ -4,7 +4,7 @@
       <v-card-title class="headline">{{part.title}}</v-card-title>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <div v-if="finishedDate">
+        <div v-if="finishedDate && this.isUserAuth">
           <v-icon>mdi-check</v-icon>
           Прочитано {{finishedDate | formattedDate}}
         </div>

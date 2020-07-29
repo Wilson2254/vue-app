@@ -29,7 +29,7 @@
         ></v-rating> -->
       </div>
 
-      <v-card-actions class="mr-2 ml-2">
+      <v-card-actions class="mr-2 ml-2" v-if="this.isUserAuth">
         <!-- <div class="ml-2">
           <span>Оценка: {{book.rating}}</span>
           <span>(Оценило: {{book.ratingsCount}})</span>
