@@ -1,23 +1,18 @@
 <template>
   <v-container v-if="part">
     <v-row justify="center">
-      <v-container v-if="finishedDate">
-        <v-card>
-          <v-img
-            src="https://firebasestorage.googleapis.com/v0/b/englishspeak-a8a45.appspot.com/o/356-3569430_checked-and-done-done-and-done-clipart.png?alt=media&token=a8873e69-b70b-4264-b6b9-083fd9d90bd8"
-            max-width="300px"
-            max-height="200px"
-            class="text-center"
-          ></v-img>
-          <v-card-title>
-            <div class="headline">Данный раздел полностью прочитан {{finishedDate | formattedDate}}</div>
-          </v-card-title>
-          <v-card-text>
-            <span>Моя оценка</span>
-            <v-rating v-model="savedRating" color="success" readonly large></v-rating>
-          </v-card-text>
-        </v-card>
-      </v-container>
+      <v-card v-if="finishedDate" width="1000">
+        <v-card-text>
+          <div class="text-center text-h5">
+            Данная часть прочитана
+            <div class="text-center">{{finishedDate | formattedDate}}</div>
+          </div>
+          <div class="text-center">
+            Моя оценка
+            <v-rating v-model="savedRating" color="orange" background-color="green lighten-2" half-increments readonly large></v-rating>
+          </div>
+        </v-card-text>
+      </v-card>
       <book-part-content :part="part"></book-part-content>
       <book-part-words :words="part.words"></book-part-words>
       <v-container>
@@ -32,9 +27,9 @@
         <v-card>
           <v-card>
             <v-img
-              src="https://firebasestorage.googleapis.com/v0/b/englishspeak-a8a45.appspot.com/o/356-3569430_checked-and-done-done-and-done-clipart.png?alt=media&token=a8873e69-b70b-4264-b6b9-083fd9d90bd8"
+              src="https://firebasestorage.googleapis.com/v0/b/englishspeak-a8a45.appspot.com/o/resolutions-10-512.png?alt=media&token=75542db9-0f56-4602-b20d-017477004879"
               max-width="300px"
-              max-height="200px"
+              max-height="250px"
               class="text-center"
             ></v-img>
             <v-card-title>
@@ -42,7 +37,7 @@
             </v-card-title>
             <v-card-text>
               <span>Моя оценка</span>
-              <v-rating v-model="rating" color="success" half-increments large></v-rating>
+              <v-rating v-model="rating" color="orange" background-color="green lighten-2" half-increments large></v-rating>
             </v-card-text>
             <v-card-actions>
               <v-spacer>
