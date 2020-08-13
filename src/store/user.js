@@ -5,13 +5,15 @@ export default {
         user: {
             isAuth: false,
             uid: null,
+            email: null,
             name: null
         }
     },
     mutations: {
         set_user(state, payload) {
             state.user.isAuth = true;
-            state.user.uid = payload
+            state.user.uid = payload.uid
+            state.user.email = payload.email
         },
         set_user_name(state, payload) {
             state.user.name = payload;
@@ -57,7 +59,7 @@ export default {
         },
         state_changed({ commit, dispatch }, payload) {
             if (payload) {
-                commit('set_user', payload.uid)
+                commit('set_user', { uid: payload.uid, email: payload.email })
                 commit('set_user_name', payload.displayName)
                 dispatch('load_user_data', payload.uid)
             } else {
@@ -67,6 +69,8 @@ export default {
     },
     getters: {
         userId: (state) => state.user.uid,
+        userName: (state) => state.user.name,
+        userEmail: (state) => state.user.email,
         isUserAuth: (state) => state.user.isAuth
     }
 }
