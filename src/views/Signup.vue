@@ -12,9 +12,20 @@
             <v-alert type="warning" v-else>{{error}}</v-alert>
             <v-form v-model="valid">
               <v-text-field
+                label="Никнейм"
+                name="name"
+                prepend-icon="mdi-account"
+                type="text"
+                color="orange"
+                required
+                v-model="name"
+                :rules="namelRules"
+              ></v-text-field>
+
+              <v-text-field
                 label="Электронная почта"
                 name="login"
-                prepend-icon="mdi-account"
+                prepend-icon="mdi-at"
                 type="email"
                 color="orange"
                 required
@@ -55,17 +66,24 @@
 export default {
   data() {
     return {
+      name: "",
       email: "",
       password: "",
       valid: false,
+      nameRules: [
+        (v) => !!v || "Пожалуйста введите никнейм",
+      ],
       emailRules: [
-        v => !!v || "Пожалуйста введите email",
-        v => /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(v) || "Неправильный email"
+        (v) => !!v || "Пожалуйста введите email",
+        (v) =>
+          /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test(
+            v
+          ) || "Неправильный email",
       ],
       passwordRules: [
-        v => !!v || "Пожалуйста введите пароль",
-        v => (v && v.length >= 6) || "Пароль должен иметь минимум 6 символов"
-      ]
+        (v) => !!v || "Пожалуйста введите пароль",
+        (v) => (v && v.length >= 6) || "Пароль должен иметь минимум 6 символов",
+      ],
     };
   },
   computed: {
@@ -77,20 +95,21 @@ export default {
     },
     isUserAuth() {
       return this.$store.getters.isUserAuth;
-    }
+    },
   },
   watch: {
     isUserAuth(val) {
       if (val === true) this.$router.push("/");
-    }
+    },
   },
   methods: {
     signup() {
       this.$store.dispatch("signup", {
         email: this.email,
-        password: this.password
+        password: this.password,
+        name: this.name
       });
-    }
-  }
+    },
+  },
 };
 </script>

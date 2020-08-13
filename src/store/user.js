@@ -5,12 +5,16 @@ export default {
         user: {
             isAuth: false,
             uid: null,
+            name: null
         }
     },
     mutations: {
         set_user(state, payload) {
             state.user.isAuth = true;
             state.user.uid = payload
+        },
+        set_user_name(state, payload) {
+            state.user.name = payload;
         },
         unset_user(state) {
             state.user = {
@@ -25,6 +29,8 @@ export default {
             commit('clear_error')
             firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
                 .then(() => {
+                    firebase.auth().currentUser.updateProfile({ displayName: payload.name })
+                        .then(() => commit('set_user_name', payload.name))
                     commit('set_processing', false)
                 })
                 .catch(function(error) {
@@ -52,6 +58,7 @@ export default {
         state_changed({ commit, dispatch }, payload) {
             if (payload) {
                 commit('set_user', payload.uid)
+                commit('set_user_name', payload.displayName)
                 dispatch('load_user_data', payload.uid)
             } else {
                 commit('unset_user')
