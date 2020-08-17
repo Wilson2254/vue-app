@@ -11,6 +11,8 @@
           </template>
           <v-card>
             <v-card-title class="headline">Изменение данных</v-card-title>
+            <v-alert type="warning" v-if="!error" :value="getError">{{getError}}</v-alert>
+            <v-alert type="warning" v-else>{{getError}}</v-alert>
             <v-card-text>
               <v-form v-model="valid">
                 <v-text-field
@@ -37,9 +39,6 @@
                 ></v-text-field>
                 <h2>Хочу изменить:</h2>
                 <v-radio-group v-model="changeType">
-                  <v-alert type="warning" v-if="!error" :value="getError">{{getError}}</v-alert>
-                  <v-alert type="warning" v-else>{{getError}}</v-alert>
-
                   <v-radio label="Никнейм" :value="'name'"></v-radio>
 
                   <v-text-field
