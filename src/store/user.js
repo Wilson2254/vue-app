@@ -18,6 +18,9 @@ export default {
         set_user_name(state, payload) {
             state.user.name = payload;
         },
+        set_user_email(state, payload) {
+            state.user.email = payload;
+        },
         unset_user(state) {
             state.user = {
                 isAuth: false,
@@ -65,6 +68,55 @@ export default {
             } else {
                 commit('unset_user')
             }
+        },
+        change_user_profile_data({ commit }, payload) {
+            let user = firebase.auth().currentUser
+            let credential = firebase.auth.EmailAuthProvider.credential(
+                payload.email,
+                payload.password
+            )
+
+            commit('set_processing', true)
+            commit('clear_error')
+
+            user.reauthenticateWithCredential(credential).then(function() {
+                if (payload.changeType == 'name') {
+                    firebase.auth().currentUser.updateProfile({ displayName: payload.newName })
+                        .then(() => {
+                            commit('set_user_name', payload.newName)
+                            commit('set_processing', false)
+                        })
+                        .catch(error => {
+                            commit('set_processing', false)
+                            commit('set_error', error.message)
+                        })
+                }
+                if (payload.changeType == 'email') {
+                    firebase.auth().currentUser.updateEmail(payload.newEmail)
+                        .then(() => {
+                            commit('set_user_email', payload.newEmail)
+                            commit('set_processing', false)
+                        })
+                        .catch(error => {
+                            commit('set_processing', false)
+                            commit('set_error', error.message)
+                        })
+                }
+                if (payload.changeType == 'password') {
+                    firebase.auth().currentUser.updatePassword(payload.newPassword)
+                        .then(() => {
+                            commit('set_processing', false)
+                        })
+                        .catch(error => {
+                            commit('set_processing', false)
+                            commit('set_error', error.message)
+                        })
+                }
+                // User re-authenticated.
+            }).catch(function(error) {
+                commit('set_processing', false)
+                commit('set_error', error.message)
+            });
         }
     },
     getters: {
