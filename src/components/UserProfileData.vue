@@ -50,7 +50,7 @@
                     type="text"
                     color="orange"
                     required
-                    v-model="newname"
+                    v-model="newName"
                     :rules="nameRules"
                   ></v-text-field>
 
@@ -131,6 +131,9 @@ export default {
   },
   computed: {
     ...mapGetters(["userName", "userEmail", "getProcessing", "getError"]),
+    error() {
+      return this.$store.getters.getError;
+    },
   },
   methods: {
     changeUserData() {
@@ -147,4 +150,4 @@ export default {
 };
 </script>
 
-<style lang="stylus"></style>
+<style></style>
